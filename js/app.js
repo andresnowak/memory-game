@@ -9,25 +9,30 @@
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
+ var deck = $('.deck');
+ var card = $('.card');
 
 function startGame() {
   var listOfCards = $('.deck').find('li');
   var shufledListOfCards = shuffle(listOfCards);
 
   listOfCards.remove();
-  $('.deck').append(shufledListOfCards);
+  deck.append(shufledListOfCards);
+
   openCard();
 }
 
 $(startGame);
 
 function openCard() {
-  var deck = $('.deck');
-  var card = $('.card');
-
   card.on('click', function(){
     $(this).addClass('show open');
   });
+}
+
+function closeCard() {
+      card.toggleClass("open", false);
+      card.toggleClass("show", false);
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
