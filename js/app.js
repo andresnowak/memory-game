@@ -35,6 +35,7 @@ function openCard() {
       matchCards(cardsClicked);
       count = 0;
       cardsClicked = [];
+      addMove();
     }
   });
 }
@@ -47,10 +48,11 @@ function closeCard(cardsClicked) {
   });
 }
 
+var countOfHowManyIncorrectMatches = 0;
 function matchCards(cardsClicked) {
   //it will see if the cards match
-  card1NameOfClass = cardsClicked[0].children('i');
-  card2NameOfClass = cardsClicked[1].children('i');
+  var card1NameOfClass = cardsClicked[0].children('i');
+  var card2NameOfClass = cardsClicked[1].children('i');
 
   if (card1NameOfClass.attr('class') === card2NameOfClass.attr('class')){
     cardsClicked.forEach(function (card){
@@ -59,10 +61,37 @@ function matchCards(cardsClicked) {
   }
   else {
     $('.card').off('click');
+
     setTimeout(function(){
      closeCard(cardsClicked);
      openCard();
     }, 2000);
+
+      countOfHowManyIncorrectMatches+=1;
+      emptyStar(countOfHowManyIncorrectMatches);
+  }
+}
+
+function addMove() {
+  var numberOfMoves = 0;
+  var numberOfMoves = parseInt($('.moves').text()) + 1;
+  $('.moves').text(numberOfMoves);
+}
+
+function emptyStar(count) {
+  var stars = $('.stars').children();
+  var starsIcons = [stars.find('i')];
+
+  switch (count) {
+    case 3:
+      $('#3').addClass('empty');
+      break;
+    case 8:
+      $('#2').addClass('empty');
+      break;
+    case 12:
+      $('#1').addClass('empty');
+      break;
   }
 }
 

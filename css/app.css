@@ -107,3 +107,7 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+.score-panel .stars .fa-star.empty {
+  color: rgba(107, 101, 101, 0.4);
+}
