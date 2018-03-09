@@ -26,10 +26,25 @@
   </div>
 
   <script>
-  var moves = localStorage.getItem('moves');
-  var stars = localStorage.getItem('stars');
-  $(".moves").text(moves);
-  $('.stars').text(stars);
+  //get cookie function fromhttps://www.w3schools.com/js/js_cookies.asp
+  function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+  $(".moves").text(getCookie('moves'));
+  $('.stars').text(getCookie('stars'));
   </script>
 </body>
 </html>
