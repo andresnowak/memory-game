@@ -40,6 +40,7 @@ function openCard() {
     $(this).addClass('show open');
     count += 1;
     cardsClicked.push($(this));
+    $(this).off('click')
 
     if (count === 2) {
       matchCards(cardsClicked);
@@ -67,10 +68,10 @@ function matchCards(cardsClicked) {
   /**
 * @description it compares the two cards that have been opened to see if they match
 * @param {1} card1NameOfClass
-* @param {2} card1NameOfClass
+* @param {2} card2NameOfClass
 */
   var card1NameOfClass = cardsClicked[0].children('i');
-  var card1NameOfClass = cardsClicked[1].children('i');
+  var card2NameOfClass = cardsClicked[1].children('i');
 
   if (card1NameOfClass.attr('class') === card2NameOfClass.attr('class')) {
     cardsClicked.forEach(function(card) {
@@ -131,19 +132,19 @@ function endGame(countOfCorrectMatches, countOfIncorrectMatches) {
 * @param {1} moves
 */
   moves = $(".moves").text();
-  localStorage.setItem('moves', moves);
+  document.cookie = "moves="+moves;
 
   if (countOfCorrectMatches === 8) {
   window.location.replace("End_game_page.html");
 
     if (countOfIncorrectMatches >= 10 && countOfIncorrectMatches < 16) {
-      localStorage.setItem('stars','2');
+      document.cookie = "stars=2";
     } else if (countOfIncorrectMatches >= 16 && countOfIncorrectMatches < 22) {
-      localStorage.setItem('stars', '1');
+      document.cookie = "stars=1"
     } else if (countOfIncorrectMatches >= 22) {
-      localStorage.setItem('stars', '0');
+      document.cookie = "stars=0";
     } else {
-      localStorage.setItem('stars', '3');
+      document.cookie = "stars=3";
     }
   }
 }
