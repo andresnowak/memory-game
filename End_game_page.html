@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Matching Game</title>
+    <meta name="description" content="">
+    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/End_game.css">
+</head>
+<body>
+  <div class="container">
+    <section class="End-game">
+      <div class="checkmark">
+        <i class="fa fa-check-circle fa-5x"></i>
+      </div>
+      <div class="congratulations">
+          Congratulations!
+      </div>
+      <div class="moves-and-stars">
+        You have won with <span class="moves">0</span> Moves and <span class="stars">0</span> stars.
+      </div>
+      <a href="Home_page.html" class="button">Play again!</a>
+    </section>
+  </div>
+
+  <script>
+  var moves = localStorage.getItem('moves');
+  var stars = localStorage.getItem('stars');
+  $(".moves").text(moves);
+  $('.stars').text(stars);
+  </script>
+</body>
+</html>

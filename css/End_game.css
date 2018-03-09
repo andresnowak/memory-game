@@ -1,0 +1,79 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Coda', cursive;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+}
+
+.End-game {
+  margin-top: 20%;
+  font-family: 'Coda', cursive;
+}
+
+.checkmark {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.fa-check-circle {
+  margin: 0;
+  padding: 0px;
+}
+
+.congratulations {
+  font-size: 30px;
+  font-family: 'Coda', cursive;
+  padding: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.moves-and-stars {
+  align-items: center;
+  justify-content: center;
+  font-size: 12px:
+}
+
+.button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px 32px;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
