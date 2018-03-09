@@ -18,6 +18,7 @@ function startGame() {
   $('.deck').append(shufledListOfCards);
 
   openCard();
+  restart();
 }
 
 $(startGame);
@@ -49,6 +50,7 @@ function closeCard(cardsClicked) {
 }
 
 var countOfHowManyIncorrectMatches = 0;
+var countOfHowManyCorrectMatches = 0;
 function matchCards(cardsClicked) {
   //it will see if the cards match
   var card1NameOfClass = cardsClicked[0].children('i');
@@ -58,14 +60,15 @@ function matchCards(cardsClicked) {
     cardsClicked.forEach(function (card){
       card.addClass('match');
     });
-  }
-  else {
+    countOfHowManyCorrectMatches+=1;
+    endGame(countOfHowManyCorrectMatches);
+  } else {
     $('.card').off('click');
 
     setTimeout(function(){
      closeCard(cardsClicked);
      openCard();
-    }, 2000);
+   }, 1500);
 
       countOfHowManyIncorrectMatches+=1;
       emptyStar(countOfHowManyIncorrectMatches);
@@ -78,21 +81,28 @@ function addMove() {
   $('.moves').text(numberOfMoves);
 }
 
-function emptyStar(count) {
+function emptyStar(countOfIncorrectMatches) {
   var stars = $('.stars').children();
   var starsIcons = [stars.find('i')];
 
-  switch (count) {
-    case 3:
+  switch (countOfIncorrectMatches) {
+    case 10:
       $('#3').addClass('empty');
       break;
-    case 8:
+    case 16:
       $('#2').addClass('empty');
       break;
-    case 12:
+    case 22:
       $('#1').addClass('empty');
       break;
   }
+}
+
+function restart() {
+  var repeat = $('.fa-repeat');
+  repeat.click(function() {
+    window.location.replace("Home_Page.html");
+  });
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
