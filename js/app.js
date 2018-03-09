@@ -11,6 +11,11 @@
  */
 
 function startGame() {
+  /**
+* @description This function starts the game and calls openCard() and restart() to make the game function
+* @param {1} listOfCards
+* @param {2} shufledListOfCards
+*/
   var listOfCards = $('.deck').find('li');
   var shufledListOfCards = shuffle(listOfCards);
 
@@ -24,8 +29,12 @@ function startGame() {
 $(startGame);
 
 function openCard() {
-  //when called it will open the cards
-  var count = 0; //to count how many cards have been clicked
+  /**
+* @description this function opens a card when it is clicked
+* @param {1} it counts how many cards have been clicked
+* @param {2} it creates a list of the cards that have been clicked
+*/
+  var count = 0;
   var cardsClicked = [];
   $('.card').on('click', function() {
     $(this).addClass('show open');
@@ -42,20 +51,26 @@ function openCard() {
 }
 
 function closeCard(cardsClicked) {
-  //when called it will remove the clases so it closes
+  /**
+* @description this function closes the cards that have been opened and didnt match
+*/
   cardsClicked.forEach(function(card) {
     $('.card').toggleClass("open", false);
     $('.card').toggleClass("show", false);
   });
 }
 
-var countOfHowManyIncorrectMatches = 0;
-var countOfHowManyCorrectMatches = 0;
+var countOfHowManyIncorrectMatches = 0;//count of how many times the cards didnt match
+var countOfHowManyCorrectMatches = 0;//counts how many matches have happened
 
 function matchCards(cardsClicked) {
-  //it will see if the cards match
+  /**
+* @description it compares the two cards that have been opened to see if they match
+* @param {1} card1NameOfClass
+* @param {2} card1NameOfClass
+*/
   var card1NameOfClass = cardsClicked[0].children('i');
-  var card2NameOfClass = cardsClicked[1].children('i');
+  var card1NameOfClass = cardsClicked[1].children('i');
 
   if (card1NameOfClass.attr('class') === card2NameOfClass.attr('class')) {
     cardsClicked.forEach(function(card) {
@@ -77,12 +92,23 @@ function matchCards(cardsClicked) {
 }
 
 function addMove() {
+  /**
+* @description it counts how many moves have happened
+* @param {1} numberOfMoves
+* @param {2} stars
++ @param {3} starsIcons
+*/
   var numberOfMoves = 0;
   var numberOfMoves = parseInt($('.moves').text()) + 1;
   $('.moves').text(numberOfMoves);
 }
 
 function emptyStar(countOfIncorrectMatches) {
+  /**
+* @description it will empty a star when called
+* @param {1} stars
+* @param {2} starsIcons
+*/
   var stars = $('.stars').children();
   var starsIcons = [stars.find('i')];
 
@@ -100,6 +126,10 @@ function emptyStar(countOfIncorrectMatches) {
 }
 
 function endGame(countOfCorrectMatches, countOfIncorrectMatches) {
+  /**
+* @description it will call End_page.html when called so the user can see the amount of moves and stars it had when the user won
+* @param {1} moves
+*/
   moves = $(".moves").text();
   localStorage.setItem('moves', moves);
 
@@ -119,6 +149,10 @@ function endGame(countOfCorrectMatches, countOfIncorrectMatches) {
 }
 
 function restart() {
+  /**
+* @description when the restart symboll is clicked this function will restart the game
+* @param {1} repeat
+*/
   var repeat = $('.fa-repeat');
   repeat.click(function() {
     window.location.replace("Home_Page.html");
