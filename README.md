@@ -5,4 +5,4 @@ each time you open two cards a move will be adde to MOVES and when you make 10,1
 When you match all of them you win.
 
 # How to use it
-You just need to open Home-page in your web browser to use it.
+You just need to open Home-page in your web browser to use it, but do not use Chrome because cookies don't function in chrome. it seems because the file is local, and chrome doesn't permit that. so when the game finishes you won't be able to see your time, amount of moves and stars you finished with.
