@@ -128,6 +128,8 @@ function endGame(countOfCorrectMatches, countOfIncorrectMatches) {
   /**
 * @description it will call End_page.html when called so the user can see the amount of moves and stars it had when the user won
 * @param {1} moves
+* @param {2} minutes
+* @param {3} seconds
 */
   if (countOfCorrectMatches === 8) {
     moves = $(".moves").text();
