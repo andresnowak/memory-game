@@ -19,7 +19,7 @@
           Congratulations!
       </div>
       <div class="moves-and-stars">
-        You have won with <span class="moves">0</span> Moves and <span class="stars">0</span> stars.
+        You have won with <span class="moves">0</span> Moves, <span class="stars">0</span> stars and <span class="minutes"></span> minutes with <span class="seconds"></span> seconds.
       </div>
       <a href="Home_page.html" class="button">Play again!</a>
     </section>
@@ -58,6 +58,9 @@
 
   $(".moves").text(getCookie('moves'));
   $('.stars').text(getCookie('stars'));
+  $('.minutes').text(getCookie('minutes'));
+  $('.seconds').text(getCookie('seconds'));
+
   deleteAllCookies();
   </script>
 </body>

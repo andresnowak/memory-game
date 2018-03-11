@@ -24,6 +24,7 @@ function startGame() {
 
   openCard();
   restart();
+  timer;
 }
 
 $(startGame);
@@ -128,13 +129,17 @@ function endGame(countOfCorrectMatches, countOfIncorrectMatches) {
 * @description it will call End_page.html when called so the user can see the amount of moves and stars it had when the user won
 * @param {1} moves
 */
-
-  moves = $(".moves").text();
-
-  document.cookie = "moves=" + moves + ";expires=" + new Date(Date.now() + 60) + ";";
-
   if (countOfCorrectMatches === 8) {
-  window.location.replace("End_game_page.html");
+    moves = $(".moves").text();
+    minutes = $("#minutes").text();
+    seconds = $("#seconds").text();
+
+    clearInterval(timer);
+
+    window.location.replace("End_game_page.html");
+    document.cookie = "moves=" + moves + ";expires=" + new Date(Date.now() + 60) + ";";
+    document.cookie = "minutes=" + minutes + ";expires=" + new Date(Date.now() + 60) + ";";
+    document.cookie = "seconds=" + seconds + ";expires=" + new Date(Date.now() + 60) + ";";
 
     if (countOfIncorrectMatches >= 16 && countOfIncorrectMatches < 24) {
       document.cookie = "stars=2;expires=" + new Date(Date.now() + 60) + ";";
@@ -175,3 +180,13 @@ function shuffle(array) {
 
   return array;
 }
+
+//Timer function from https://stackoverflow.com/questions/5517597/plain-count-up-timer-in-javascript
+var sec = 0;
+
+function pad ( val ) { return val > 9 ? val : "0" + val; }
+
+ var timer = setInterval( function(){
+    document.getElementById("seconds").innerHTML=pad(++sec%60);
+    document.getElementById("minutes").innerHTML=pad(parseInt(sec/60,10));
+}, 1000);
