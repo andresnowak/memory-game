@@ -114,14 +114,11 @@ function emptyStar(countOfIncorrectMatches) {
   var starsIcons = [stars.find('i')];
 
   switch (countOfIncorrectMatches) {
-    case 10:
+    case 16:
       $('#3').addClass('empty');
       break;
-    case 16:
+    case 24:
       $('#2').addClass('empty');
-      break;
-    case 22:
-      $('#1').addClass('empty');
       break;
   }
 }
@@ -131,20 +128,20 @@ function endGame(countOfCorrectMatches, countOfIncorrectMatches) {
 * @description it will call End_page.html when called so the user can see the amount of moves and stars it had when the user won
 * @param {1} moves
 */
+
   moves = $(".moves").text();
-  document.cookie = "moves="+moves;
+
+  document.cookie = "moves=" + moves + ";expires=" + new Date(Date.now() + 60) + ";";
 
   if (countOfCorrectMatches === 8) {
   window.location.replace("End_game_page.html");
 
-    if (countOfIncorrectMatches >= 10 && countOfIncorrectMatches < 16) {
-      document.cookie = "stars=2";
-    } else if (countOfIncorrectMatches >= 16 && countOfIncorrectMatches < 22) {
-      document.cookie = "stars=1"
-    } else if (countOfIncorrectMatches >= 22) {
-      document.cookie = "stars=0";
+    if (countOfIncorrectMatches >= 16 && countOfIncorrectMatches < 24) {
+      document.cookie = "stars=2;expires=" + new Date(Date.now() + 60) + ";";
+    } else if (countOfIncorrectMatches >= 24) {
+      document.cookie = "stars=1;expires=" + new Date(Date.now() + 60) + ";";
     } else {
-      document.cookie = "stars=3";
+      document.cookie = "stars=3;expires=" + new Date(Date.now() + 60) + ";";
     }
   }
 }
